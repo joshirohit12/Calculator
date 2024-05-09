@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+    <div class="calc">
+        <input type="text" placeholder="0" id="inputbox">
+        <div>
+            <button class="function">AC</button>
+            <button class="function">DEL</button>
+            <button class="function">%</button>
+            <button class="function">/</button>
+        </div>
+        <div>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="function">*</button>
+        </div>
+        <div>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="function">-</button>
+        </div>
+        <div>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="function">+</button>
+        </div>
+        <div>
+            <button>0</button>
+            <button>00</button>
+            <button class="function">.</button>
+            <button class="equal">=</button>
+        </div>
+    </div>
+
+    <script>
+        let input = document.getElementById("inputbox");
+        let buttons = document.querySelectorAll("button");
+
+        let string = "";
+        let arr = Array.from(buttons);
+        arr.forEach(button => {
+            button.addEventListener('click', (e) => {
+                if (e.target.innerHTML == "=" ) {
+                    string = eval(string);
+                    input.value = string;
+                }
+                string += e.target.innerHTML;
+                input.value = string;
+            })
+            button.addEventListener('click', (e) => {
+                if (e.target.innerHTML == "AC" ) {
+                    input.value=""
+                }
+            })
+            button.addEventListener('click', (e) => {
+                if (e.target.innerHTML == "DEL" ) {
+                    input.value=""
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
